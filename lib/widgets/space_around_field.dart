@@ -7,6 +7,6 @@ class SpaceAroundField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(height: height ?? 0, width: width ?? 0);
+    return SizedBox(height: height ?? 10, width: width ?? 0);
   }
 }

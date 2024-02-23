@@ -4,6 +4,8 @@ import 'package:nasa_api/bloc_providers.dart';
 import 'package:nasa_api/features/splash/presentation/view/splash_screen.dart';
 import 'package:nasa_api/routes.dart';
 
+var height;
+var width;
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: BlocProviders.providers,
         child: MaterialApp(
-          title: 'NASA',
+          title: 'Shoppify',
+          debugShowCheckedModeBanner: false,
           routes: Routes.routes,
           theme: ThemeData(
             // This is the theme of your application.

@@ -1,3 +1,3 @@
 class ImageConstants {
-  static const bgImage = "assets/images/bgImage.jpg";
+  static const bgImage = "assets/images/bgImage.png";
 }

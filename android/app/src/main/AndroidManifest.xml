@@ -1,6 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Add the INTERNET permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Add the ACCESS_NETWORK_STATE permission -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
-        android:label="nasa_api"
+        android:label="shoppify"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

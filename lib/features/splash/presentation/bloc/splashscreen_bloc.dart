@@ -9,7 +9,7 @@ part 'splashscreen_state.dart';
 class SplashscreenBloc extends Bloc<SplashscreenEvent, SplashscreenState> {
   SplashscreenBloc() : super(SplashscreenInitial(login: false)) {
     on<SplashScreenLoginCheck>((event, emit) async {
-      await Future.delayed(const Duration(seconds: 5), () {
+      await Future.delayed(const Duration(seconds: 3), () {
         emit(SplashscreenInitial(login: true));
       });
 
