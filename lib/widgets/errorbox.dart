@@ -27,11 +27,15 @@ class _ErrorBoxState extends State<ErrorBox> {
           top: height * 0.3,
           bottom: height * 0.3),
       child: Container(
-          padding: EdgeInsets.only(top: height * 0.01, bottom: height * 0.01),
+          padding: EdgeInsets.only(
+              left: width * 0.015,
+              right: width * 0.015,
+              top: height * 0.03,
+              bottom: height * 0.03),
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(20)),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
 
