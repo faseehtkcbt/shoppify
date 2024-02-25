@@ -24,6 +24,9 @@ class SplashScreen extends StatelessWidget {
         widget: AppButton(
           btnText: "Get Started",
           btnColor: Colors.blueAccent,
+          function: (){
+            Navigator.pushNamedAndRemoveUntil(context, Routes.login, (route) => false);
+          },
         ),
         edgeInsets:
             const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
