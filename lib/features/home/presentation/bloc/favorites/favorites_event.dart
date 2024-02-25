@@ -15,4 +15,6 @@ class RemoveFavItem extends FavoritesEvent {
   RemoveFavItem({required this.favList, required this.newProduct});
 }
 
-class CheckFavItem extends FavoritesEvent {}
+class GetFavItem extends FavoritesEvent {}
+
+

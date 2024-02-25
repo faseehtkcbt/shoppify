@@ -3,7 +3,15 @@ part of 'splashscreen_bloc.dart';
 @immutable
 abstract class SplashscreenState {}
 
-class SplashscreenInitial extends SplashscreenState {
-  bool login;
-  SplashscreenInitial({required this.login});
+class ExistingLoading extends SplashscreenState {
+   ExistingLoading();
+}
+
+class ExistingLoaded extends SplashscreenState {
+  bool exist;
+  ExistingLoaded(this.exist);
+}
+
+class ExistingError extends SplashscreenState {
+   ExistingError();
 }

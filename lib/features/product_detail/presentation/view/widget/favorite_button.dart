@@ -9,16 +9,16 @@ import '../../../../home/data/products/modal/products.dart';
 
 class FavoriteButton extends StatelessWidget {
   Products product;
-  List<Products> favList = [];
+  List<Products> favList ;
 
   FavoriteButton({
     super.key,
     required this.product,
+    required this.favList
   });
 
   @override
   Widget build(BuildContext context) {
-    favList = BlocProvider.of<FavoritesBloc>(context).getData();
     return GestureDetector(
       onTap: CommonMethods().checkFavorite(favList, product)
           ? () {

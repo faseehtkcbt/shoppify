@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_api/bloc_providers.dart';
@@ -6,7 +7,17 @@ import 'package:nasa_api/routes.dart';
 
 var height;
 var width;
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  // To properly connect project with firebase
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyCcHo8m1rL-NqhyIp1ngDTqnalYxzzO2GA",
+        appId: "1:617334604013:android:d33be2174c84b2ae2d8ce4",
+
+        projectId: "shoppiy", messagingSenderId: '',
+        ),
+  );
   runApp(const MyApp());
 }
 

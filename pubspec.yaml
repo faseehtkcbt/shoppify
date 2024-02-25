@@ -1,3 +1,4 @@
+
 name: nasa_api
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
@@ -38,7 +39,11 @@ dependencies:
   http:
   flutter_bloc:
   dartz:
-
+  sqflite:
+  connectivity_plus:
+  firebase_core:
+  firebase_auth:
+  shared_preferences:
 dev_dependencies:
   flutter_test:
     sdk: flutter

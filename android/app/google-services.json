@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "617334604013",
+    "project_id": "shoppiy",
+    "storage_bucket": "shoppiy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617334604013:android:d33be2174c84b2ae2d8ce4",
+        "android_client_info": {
+          "package_name": "com.example.nasa_api"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcHo8m1rL-NqhyIp1ngDTqnalYxzzO2GA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

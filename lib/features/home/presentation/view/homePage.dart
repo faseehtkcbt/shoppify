@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nasa_api/features/home/presentation/view/screens/cart_screen.dart';
+import 'package:nasa_api/features/cart/presentation/view/cart_screen.dart';
 import 'package:nasa_api/features/home/presentation/view/screens/favoriteScreen.dart';
 import 'package:nasa_api/features/home/presentation/view/screens/homeScreen.dart';
 import 'package:nasa_api/features/home/presentation/view/widgets/custom_bottom_bar_item.dart';

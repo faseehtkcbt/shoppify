@@ -4,3 +4,4 @@ part of 'splashscreen_bloc.dart';
 abstract class SplashscreenEvent {}
 
 class SplashScreenLoginCheck extends SplashscreenEvent {}
+

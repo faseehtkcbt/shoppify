@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_api/constants/app_constants.dart';
+import 'package:nasa_api/features/cart/data/model/cart_product_model.dart';
+import 'package:nasa_api/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:nasa_api/features/home/presentation/bloc/favorites/favorites_bloc.dart';
 import 'package:nasa_api/features/home/presentation/view/widgets/star_icon.dart';
 import 'package:nasa_api/features/product_detail/presentation/view/widget/favorite_button.dart';
@@ -20,7 +22,7 @@ class ProductDetailScreen extends StatelessWidget {
   List<Products> favList = [];
   @override
   Widget build(BuildContext context) {
-    favList = BlocProvider.of<FavoritesBloc>(context).getData();
+    favList = BlocProvider.of<FavoritesBloc>(context).getDemoData();
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -65,6 +67,9 @@ class ProductDetailScreen extends StatelessWidget {
                 btnText: "Add To Cart",
                 iconData: Icons.shopping_cart_outlined,
                 width: 150,
+                function: (){
+                  context.read<CartBloc>().add(AddItem(cartProductModel: CartProductModel(productId: product.id,quantity: 1)));
+                },
               )
             ],
           ),
@@ -97,7 +102,7 @@ class ProductDetailScreen extends StatelessWidget {
                               builder: (context, favState) {
                                 if (favState is FavoritesLoaded) {
                                   return FavoriteButton(
-                                    product: product,
+                                    product: product, favList: favState.favList,
                                   );
                                 } else {
                                   return CustomLoader(

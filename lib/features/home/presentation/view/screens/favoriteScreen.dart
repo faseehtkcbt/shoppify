@@ -13,17 +13,13 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: AppText(
             text: "Favorites",
-            fontSize: 30,
+            fontSize: 28,
             fontWeight: FontWeight.w600,
             textOverFlow: TextOverflow.ellipsis),
         actions: const [
-          Icon(
-            Icons.notifications_none,
-            color: Colors.black,
-            size: 30,
-          )
         ],
       ),
       body: BlocConsumer<FavoritesBloc, FavoritesState>(

@@ -23,8 +23,9 @@ class HomeScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("favorite data:");
-    List<Products> data = BlocProvider.of<FavoritesBloc>(context).getData();
-    print(data);
+   /* List<Products> data = BlocProvider.of<FavoritesBloc>(context).getDemoData();
+    print(data);*/
+    context.read<FavoritesBloc>().add(GetFavItem());
     context.read<ProductsBloc>().add(GetProducts());
     context.read<CategoryBloc>().add(GetCategories());
     return Scaffold(
@@ -35,11 +36,7 @@ class HomeScreenPage extends StatelessWidget {
               fontWeight: FontWeight.w600,
               textOverFlow: TextOverflow.ellipsis),
           actions: const [
-            Icon(
-              Icons.notifications_none,
-              color: Colors.black,
-              size: 30,
-            )
+
           ],
         ),
         body: BlocConsumer<ProductsBloc, ProductsState>(

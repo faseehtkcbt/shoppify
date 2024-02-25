@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nasa_api/features/authentication/login/presentation/bloc/login_bloc.dart';
+import 'package:nasa_api/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:nasa_api/features/home/presentation/bloc/catogories/category_bloc.dart';
 import 'package:nasa_api/features/home/presentation/bloc/favorites/favorites_bloc.dart';
 import 'package:nasa_api/features/home/presentation/bloc/navigation/navigation_bloc.dart';
@@ -16,6 +18,9 @@ class BlocProviders {
     BlocProvider<SearchedProductsBloc>(
         create: (context) => SearchedProductsBloc()),
     BlocProvider<FavoritesBloc>(create: (context) => FavoritesBloc()),
-    BlocProvider<NavigationBloc>(create: (context)=>NavigationBloc())
+    BlocProvider<NavigationBloc>(create: (context)=>NavigationBloc()),
+    BlocProvider<CartBloc>(create: (context) => CartBloc()),
+    BlocProvider<LoginBloc>(create: (context)=>LoginBloc())
+
   ];
 }

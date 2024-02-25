@@ -1,5 +1,9 @@
 enum ApiException { none, networkException, serverException }
-
+enum ConnectionType{
+  Wifi,
+  Mobile,
+  None
+}
 class AppConstants {
   static const appName = 'Shoppify';
 

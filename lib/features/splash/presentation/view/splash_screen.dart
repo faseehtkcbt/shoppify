@@ -23,17 +23,18 @@ class SplashScreen extends StatelessWidget {
       bottomNavigationBar: CommonBottomBar(
         widget: AppButton(
           btnText: "Get Started",
-          btnColor: Colors.black,
+          btnColor: Colors.blueAccent,
         ),
         edgeInsets:
             const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       ),
       body: BlocConsumer<SplashscreenBloc, SplashscreenState>(
-        listener: (context, state) {
-          if (state is SplashscreenInitial) {
-            if (state.login == true) {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, Routes.homePage, (route) => false);
+        listener: (context, existState) {
+          if (existState is ExistingLoaded) {
+            if (existState.exist == true) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                Navigator.pushNamedAndRemoveUntil(context, Routes.homePage, (route) => false);
+              });
             }
           }
           // TODO: implement listener
@@ -51,7 +52,7 @@ class SplashScreen extends StatelessWidget {
                         child: Image.asset(
                           ImageConstants.bgImage,
                           fit: BoxFit.fill,
-                          height: 600,
+                          height: height*0.75,
                           width: 450,
                         )),
                     Positioned(

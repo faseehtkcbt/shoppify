@@ -15,80 +15,88 @@ import '../../../data/products/modal/products.dart';
 class ProductCard extends StatelessWidget {
   Products product;
 
-  ProductCard({super.key, required this.product});
+  ProductCard({super.key, required this.product,required this.favList});
 
-  List<Products> favList = [];
+  List<Products> favList ;
 
   @override
   Widget build(BuildContext context) {
-    favList = BlocProvider.of<FavoritesBloc>(context).getData();
-    return Container(
-      padding: EdgeInsets.all(5),
-      height: 250,
-      width: width * 0.4,
-      decoration: customDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxBorder: Border.all(color: Colors.black, width: 2)),
-      child: Stack(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+    return BlocConsumer<FavoritesBloc, FavoritesState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return Container(
+          padding: EdgeInsets.all(5),
+          height: 250,
+          width: width * 0.4,
+          decoration: customDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxBorder: Border.all(color: Colors.black, width: 2)),
+          child: Stack(
             children: [
-              Expanded(
-                child: CustomImage(
-                  imageSrc: product.image ?? "",
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                  boxFit: BoxFit.contain,
-                ),
-              ),
-              Container(
-                height: 90,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    StarIcon(rating: product.rating),
-                    AppText(
-                      text: product.title ?? "",
-                      maxLines: 2,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: CustomImage(
+                      imageSrc: product.image ?? "",
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                      boxFit: BoxFit.contain,
                     ),
-                    AppText(
-                      text: "${AppConstants.rupeeSymbol} " +
-                          product.price.toString(),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 13,
-                    )
-                  ],
-                ),
-              )
+                  ),
+                  Container(
+                    height: 90,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        StarIcon(rating: product.rating),
+                        AppText(
+                          text: product.title ?? "",
+                          maxLines: 2,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
+                        ),
+                        AppText(
+                          text: "${AppConstants.rupeeSymbol} " +
+                              product.price.toString(),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13,
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Positioned(
+                  top: 0,
+                  right: 0,
+                  child: BlocConsumer<FavoritesBloc, FavoritesState>(
+                    listener: (context, favState) {
+                      // TODO: implement listener
+                    },
+                    builder: (context, favState) {
+                      if (favState is FavoritesLoaded) {
+                        return FavoriteButton(
+                          favList: favList,
+                          product: product,
+                        );
+                      } else {
+                        return CustomLoader(
+                          size: 5,
+                        );
+                      }
+                    },
+                  ))
             ],
           ),
-          Positioned(
-              top: 0,
-              right: 0,
-              child: BlocConsumer<FavoritesBloc, FavoritesState>(
-                listener: (context, favState) {
-                  // TODO: implement listener
-                },
-                builder: (context, favState) {
-                  if (favState is FavoritesLoaded) {
-                    return FavoriteButton(
-                      product: product,
-                    );
-                  } else {
-                    return CustomLoader(
-                      size: 5,
-                    );
-                  }
-                },
-              ))
-        ],
-      ),
+        );
+      },
     );
   }
 }

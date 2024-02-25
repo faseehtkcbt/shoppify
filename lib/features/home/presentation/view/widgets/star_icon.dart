@@ -25,7 +25,7 @@ class StarIcon extends StatelessWidget {
             size: 15,
           ),
           AppText(
-            text: rating!.rate.toString(),
+            text: rating?.rate.toString() ??"",
             fontSize: 12,
             textColor: Colors.white,
           )
