@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nasa_api/constants/app_constants.dart';
-import 'package:nasa_api/constants/imageConstatnts.dart';
+import 'package:nasa_api/core/utils/apptext.dart';
 import 'package:nasa_api/features/splash/presentation/bloc/splashscreen_bloc.dart';
 import 'package:nasa_api/main.dart';
 import 'package:nasa_api/routes.dart';
-import 'package:nasa_api/widgets/appbutton.dart';
-import 'package:nasa_api/widgets/apptext.dart';
-import 'package:nasa_api/widgets/common_bottom_bar.dart';
-import 'package:nasa_api/widgets/decoration.dart';
+
+import '../../../../core/constants/imageConstatnts.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -20,18 +17,11 @@ class SplashScreen extends StatelessWidget {
 
     context.read<SplashscreenBloc>().add(SplashScreenLoginCheck());
     return Scaffold(
-      bottomNavigationBar: CommonBottomBar(
-        widget: AppButton(
-          btnText: "Get Started",
-          btnColor: Colors.blueAccent,
-          function: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, Routes.login, (route) => false);
-          },
-        ),
-        edgeInsets:
-            const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
-      ),
+      bottomNavigationBar: ElevatedButton(
+          onPressed: () {},
+          child: AppText(
+              text: 'Get Started',
+              textStyle: Theme.of(context).textTheme.bodyLarge)),
       body: SafeArea(
         child: BlocConsumer<SplashscreenBloc, SplashscreenState>(
           listener: (context, existState) {
@@ -48,7 +38,7 @@ class SplashScreen extends StatelessWidget {
           builder: (context, state) {
             return Center(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
                         ImageConstants.bgImage,

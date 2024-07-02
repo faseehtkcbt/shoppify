@@ -1,39 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:nasa_api/constants/app_constants.dart';
-import 'package:nasa_api/widgets/appTextStyle.dart';
 
 class AppText extends StatelessWidget {
-  String text;
-  String? fontFamily;
-  TextDecoration? textDecoration;
-  Color? textColor;
-  double? fontSize;
-  FontWeight? fontWeight;
-  TextOverflow? textOverFlow;
-  int? maxLines;
-  AppText(
+  final String text;
+  final double? textSize;
+  final FontWeight? fontWeight;
+  final Color? textColor;
+  final TextOverflow textOverflow;
+  final TextStyle? textStyle;
+  final int maxLines;
+  final TextDecoration? textDecoration;
+  const AppText(
       {super.key,
       required this.text,
-      this.textDecoration,
-      this.textColor,
-      this.fontSize,
+      required this.textStyle,
+      this.textSize,
       this.fontWeight,
-      this.fontFamily,
-      this.textOverFlow,
-      this.maxLines});
+      this.textColor,
+      this.textOverflow = TextOverflow.ellipsis,
+      this.textDecoration,
+      this.maxLines = 1});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      maxLines: maxLines ?? 1,
-      style: appTextStyle(
+      overflow: textOverflow,
+      maxLines: maxLines,
+      style: textStyle?.copyWith(
+          fontFamily: 'Poppins',
+          color: textColor,
           fontWeight: fontWeight,
-          textOverFlow: textOverFlow,
-          fontFamily: fontFamily,
-          fontSize: fontSize,
-          textColor: textColor,
-          textDecoration: textDecoration),
+          fontSize: textSize,
+          decoration: textDecoration),
     );
   }
 }

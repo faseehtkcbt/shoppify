@@ -2,8 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_api/bloc_providers.dart';
-import 'package:nasa_api/features/splash/presentation/view/splash_screen.dart';
 import 'package:nasa_api/routes.dart';
+
+import 'features/splash/presentation/pages/splash_screen.dart';
 
 var height;
 var width;

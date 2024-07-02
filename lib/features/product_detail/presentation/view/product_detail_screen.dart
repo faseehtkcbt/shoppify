@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nasa_api/constants/app_constants.dart';
+import 'package:nasa_api/core/utils/apptext.dart';
 import 'package:nasa_api/features/cart/data/model/cart_product_model.dart';
 import 'package:nasa_api/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:nasa_api/features/home/presentation/bloc/favorites/favorites_bloc.dart';
 import 'package:nasa_api/features/home/presentation/view/widgets/star_icon.dart';
 import 'package:nasa_api/features/product_detail/presentation/view/widget/favorite_button.dart';
-import 'package:nasa_api/widgets/app_icon_text_button.dart';
-import 'package:nasa_api/widgets/common_bottom_bar.dart';
-import 'package:nasa_api/widgets/customImage.dart';
-import 'package:nasa_api/widgets/space_around_field.dart';
 
+import '../../../../core/utils/common_bottom_bar.dart';
 import '../../../../main.dart';
-import '../../../../widgets/apptext.dart';
-import '../../../../widgets/loading.dart';
 import '../../../home/data/products/modal/products.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -63,14 +58,9 @@ class ProductDetailScreen extends StatelessWidget {
                   )
                 ],
               ),
-              AppTextIconButton(
-                btnText: "Add To Cart",
-                iconData: Icons.shopping_cart_outlined,
-                width: 150,
-                function: (){
-                  context.read<CartBloc>().add(AddItem(cartProductModel: CartProductModel(productId: product.id,quantity: 1)));
-                },
-              )
+              ElevatedButton(
+                  onPressed: onPressed,
+                  child: AppText(text: text, textStyle: textStyle))
             ],
           ),
         ),
@@ -102,7 +92,8 @@ class ProductDetailScreen extends StatelessWidget {
                               builder: (context, favState) {
                                 if (favState is FavoritesLoaded) {
                                   return FavoriteButton(
-                                    product: product, favList: favState.favList,
+                                    product: product,
+                                    favList: favState.favList,
                                   );
                                 } else {
                                   return CustomLoader(
