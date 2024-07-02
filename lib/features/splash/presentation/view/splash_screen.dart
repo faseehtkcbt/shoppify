@@ -24,60 +24,43 @@ class SplashScreen extends StatelessWidget {
         widget: AppButton(
           btnText: "Get Started",
           btnColor: Colors.blueAccent,
-          function: (){
-            Navigator.pushNamedAndRemoveUntil(context, Routes.login, (route) => false);
+          function: () {
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.login, (route) => false);
           },
         ),
         edgeInsets:
             const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       ),
-      body: BlocConsumer<SplashscreenBloc, SplashscreenState>(
-        listener: (context, existState) {
-          if (existState is ExistingLoaded) {
-            if (existState.exist == true) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                Navigator.pushNamedAndRemoveUntil(context, Routes.homePage, (route) => false);
-              });
+      body: SafeArea(
+        child: BlocConsumer<SplashscreenBloc, SplashscreenState>(
+          listener: (context, existState) {
+            if (existState is ExistingLoaded) {
+              if (existState.exist == true) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, Routes.homePage, (route) => false);
+                });
+              }
             }
-          }
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return Center(
-            child: Container(
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        ImageConstants.bgImage,
+                      ),
+                      fit: BoxFit.fill),
+                ),
                 height: height,
                 width: width,
-                child: Stack(
-                  children: [
-                    Positioned(
-                        bottom: 0,
-                        right: -100,
-                        child: Image.asset(
-                          ImageConstants.bgImage,
-                          fit: BoxFit.fill,
-                          height: height*0.75,
-                          width: 450,
-                        )),
-                    Positioned(
-                      top: 50,
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: SizedBox(
-                          width: width * 0.9,
-                          child: AppText(
-                              text: "Define yourself in your unique way.",
-                              fontSize: 45,
-                              textColor: Colors.black,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: AppConstants.poppinsFont,
-                              maxLines: 3),
-                        ),
-                      ),
-                    )
-                  ],
-                )),
-          );
-        },
+              ),
+            );
+          },
+        ),
       ),
     );
   }

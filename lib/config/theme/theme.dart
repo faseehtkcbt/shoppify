@@ -9,6 +9,9 @@ class AppTheme {
           color: color ?? AppPellete.textBlack,
           fontWeight: fontWeight ?? FontWeight.w500,
           fontSize: size ?? 16);
+  static OutlineInputBorder _border({Color? color}) => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(color: color ?? AppPellete.textBlack));
 
   static final TextTheme _lightTextTheme = TextTheme(
       bodyLarge: _lightTextStyle(),
@@ -20,6 +23,16 @@ class AppTheme {
       ),
       titleMedium: _lightTextStyle(size: 24, fontWeight: FontWeight.w600),
       titleSmall: _lightTextStyle(size: 20, fontWeight: FontWeight.w600));
+
+  static final InputDecorationTheme _lightInputDecoration =
+      InputDecorationTheme(
+          contentPadding: const EdgeInsets.all(15),
+          enabledBorder: _border(),
+          errorBorder: _border(color: AppPellete.errorColor),
+          focusedErrorBorder: _border(color: AppPellete.errorColor),
+          focusedBorder: _border(
+            color: AppPellete.themeColor,
+          ));
 
   static final ElevatedButtonThemeData _lightButtonTheme =
       ElevatedButtonThemeData(
@@ -41,5 +54,6 @@ class AppTheme {
   static dynamic lightTheme = ThemeData.light(useMaterial3: true).copyWith(
       elevatedButtonTheme: _lightButtonTheme,
       textTheme: _lightTextTheme,
+      inputDecorationTheme: _lightInputDecoration,
       bottomNavigationBarTheme: _lightBottomBarTheme);
 }
